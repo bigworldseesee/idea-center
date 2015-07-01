@@ -89,8 +89,8 @@ class Harvester extends events.EventEmitter
         if Number(words[6]) < 500 and Number(words[9]) < 500
           delete activeSession[id]
         else
-          activeSession[id].sent = Number(words[6]) / 1024 / 1024
-          activeSession[id].received = Number(words[9]) / 1024 / 1024
+          activeSession[id].sent = Number(words[6])
+          activeSession[id].received = Number(words[9])
 
       else if activeSession[id] and words[5] is 'Exit.'
         @_saveSession id, timestamp, activeSession[id].received, activeSession[id].sent
@@ -102,9 +102,10 @@ class Harvester extends events.EventEmitter
 
   _saveSession: (id, timestamp, received, sent) ->
     activeSession[id].end = timestamp.toDate()
-    activeSession[id].duration = (activeSession[id].end - activeSession[id].start) / 1000 / 60
+    activeSession[id].duration = (activeSession[id].end - activeSession[id].start) / 1000
     thisSession = new Session (
       username: activeSession[id].username
+      version: 0
       id: activeSession[id].id
       interface: activeSession[id].interface
       ip: activeSession[id].ip

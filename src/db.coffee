@@ -13,6 +13,7 @@ SyslogSchema = Schema (
 
 SessionSchema = Schema (
   username: String
+  version: Number
   id: String
   interface: String
   ip: String
