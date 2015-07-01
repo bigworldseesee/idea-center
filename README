@@ -1,0 +1,7 @@
+v0.1 harvester looks for key words "peer from" in syslog to create a new Session.
+
+The custom version of pptpd somehow does not procude this keywords when connected.
+
+This actually provides a way to migrate to the custom version, as the old harvester can only harvest to the point of the custom pptpd.
+
+v1.0 harvester will start from the log in /var/log/pptpd/monitor.log. So there is no overlap.
